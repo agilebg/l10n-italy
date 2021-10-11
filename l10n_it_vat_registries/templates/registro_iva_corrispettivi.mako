@@ -28,7 +28,6 @@
             <th class="right_without_line">Importo totale</th>
             <th class="right_without_line">Imposta</th>
             <th class="right_without_line">Importo</th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
