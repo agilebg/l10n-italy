@@ -321,7 +321,9 @@ class MigrateL10nItDdt(EasyCommand):
                 ].id,
                 "transport_reason_id": self._transportation_reasons[
                     record.transportation_reason_id
-                ].id,
+                ].id
+                if record.transportation_reason_id
+                else False,
                 "transport_condition_id": self._carriage_conditions[
                     record.carriage_condition_id
                 ].id,
