@@ -4,6 +4,8 @@
 
 import logging
 
+import psycopg2
+
 from odoo import _, fields
 from odoo.exceptions import UserError, ValidationError
 
@@ -338,27 +340,37 @@ class MigrateL10nItDdt(EasyCommand):
 
         documents = Document.search([], order="id ASC")
         for document in documents:
-            delivery_note = DeliveryNote.create(vals_getter(document))
-            extra_lines = document.line_ids.filtered(lambda l: not l.move_id)
+            try:
+                with self.env.cr.savepoint():
+                    _logger.info("PROCESSING - ID Document = {}".format(document.id))
+                    delivery_note = DeliveryNote.create(vals_getter(document))
+                    extra_lines = document.line_ids.filtered(lambda l: not l.move_id)
 
-            if extra_lines:
-                lines_vals = []
+                    if extra_lines:
+                        lines_vals = []
 
-                for line in extra_lines:
-                    lines_vals.append(
-                        {
-                            "name": line.name,
-                            "product_id": line.product_id.id,
-                            "product_qty": line.product_uom_qty,
-                            "product_uom_id": line.product_uom_id.id,
-                            "price_unit": line.price_unit,
-                            "discount": line.discount,
-                            "tax_ids": [(4, t.id) for t in line.tax_ids],
-                        }
-                    )
+                        for line in extra_lines:
+                            lines_vals.append(
+                                {
+                                    "name": line.name,
+                                    "product_id": line.product_id.id,
+                                    "product_qty": line.product_uom_qty,
+                                    "product_uom_id": line.product_uom_id.id,
+                                    "price_unit": line.price_unit,
+                                    "discount": line.discount,
+                                    "tax_ids": [(4, t.id) for t in line.tax_ids],
+                                }
+                            )
 
-                delivery_note.write(
-                    {"line_ids": [(0, False, vals) for vals in lines_vals]}
+                        delivery_note.write(
+                            {"line_ids": [(0, False, vals) for vals in lines_vals]}
+                        )
+            except psycopg2.errors.UniqueViolation:
+                # to skip error duplicate key value violates unique constraint
+                # "stock_delivery_note_line_move_uniq"
+                _logger.info(
+                    "ERROR (stock_delivery_note_line_move_uniq constraint) "
+                    "- ID Document = {}".format(document.id)
                 )
 
         _logger.info("Documents data successfully migrated.")
