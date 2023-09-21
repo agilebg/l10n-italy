@@ -307,7 +307,7 @@ class MigrateL10nItDdt(EasyCommand):
                 "transport_datetime": record.date_done,
                 "packages": record.parcels,
                 "volume": record.volume,
-                "volume_uom_id": record.volume_uom_id.id or self._default_volume_uom.id,
+                # "volume_uom_id": record.volume_uom_id.id or self._default_volume_uom.id,
                 "gross_weight": record.gross_weight or record.weight,
                 "gross_weight_uom_id": record.gross_weight_uom_id.id
                 or self._default_weight_uom.id,
