@@ -327,7 +327,7 @@ class MigrateL10nItDdt(EasyCommand):
                     record.transportation_method_id
                 ].id,
                 "picking_ids": [(4, p.id) for p in record.picking_ids],
-                "invoice_ids": [(4, record.invoice_id.id)] if record.invoice_id else [],
+                # "invoice_ids": [(4, record.invoice_id.id)] if record.invoice_id else [],
                 "note": record.note,
             }
 
