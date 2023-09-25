@@ -133,21 +133,7 @@ class MigrateL10nItDdt(EasyCommand):
         CarriageCondition = self.env["stock.picking.carriage_condition"]
         TransportCondition = self.env["stock.picking.transport.condition"]
 
-        pf = self._map_ref(
-            self._carriage_conditions, "carriage_condition_PF", "transport_condition_PF"
-        )
-        pa = self._map_ref(
-            self._carriage_conditions, "carriage_condition_PA", "transport_condition_PA"
-        )
-        paf = self._map_ref(
-            self._carriage_conditions,
-            "carriage_condition_PAF",
-            "transport_condition_PAF",
-        )
-
-        records = CarriageCondition.search(
-            [("id", "not in", [pf.id, pa.id, paf.id])], order="id ASC"
-        )
+        records = CarriageCondition.search([], order="id ASC")
 
         self._map_create(self._carriage_conditions, records, TransportCondition)
 
@@ -159,22 +145,7 @@ class MigrateL10nItDdt(EasyCommand):
         GoodsDescription = self.env["stock.picking.goods_description"]
         GoodsAppearance = self.env["stock.picking.goods.appearance"]
 
-        car = self._map_ref(
-            self._goods_descriptions, "goods_description_CAR", "goods_appearance_CAR"
-        )
-        ban = self._map_ref(
-            self._goods_descriptions, "goods_description_BAN", "goods_appearance_BAN"
-        )
-        sfu = self._map_ref(
-            self._goods_descriptions, "goods_description_SFU", "goods_appearance_SFU"
-        )
-        cba = self._map_ref(
-            self._goods_descriptions, "goods_description_CBA", "goods_appearance_CBA"
-        )
-
-        records = GoodsDescription.search(
-            [("id", "not in", [car.id, ban.id, sfu.id, cba.id])], order="id ASC"
-        )
+        records = GoodsDescription.search([], order="id ASC")
 
         self._map_create(self._goods_descriptions, records, GoodsAppearance)
 
@@ -186,25 +157,7 @@ class MigrateL10nItDdt(EasyCommand):
         TransportationReason = self.env["stock.picking.transportation_reason"]
         TransportReason = self.env["stock.picking.transport.reason"]
 
-        ven = self._map_ref(
-            self._transportation_reasons,
-            "transportation_reason_VEN",
-            "transport_reason_VEN",
-        )
-        vis = self._map_ref(
-            self._transportation_reasons,
-            "transportation_reason_VIS",
-            "transport_reason_VIS",
-        )
-        res = self._map_ref(
-            self._transportation_reasons,
-            "transportation_reason_RES",
-            "transport_reason_RES",
-        )
-
-        records = TransportationReason.search(
-            [("id", "not in", [ven.id, vis.id, res.id])], order="id ASC"
-        )
+        records = TransportationReason.search([], order="id ASC")
 
         self._map_create(self._transportation_reasons, records, TransportReason)
 
@@ -216,25 +169,7 @@ class MigrateL10nItDdt(EasyCommand):
         TransportationMethod = self.env["stock.picking.transportation_method"]
         TransportMethod = self.env["stock.picking.transport.method"]
 
-        mit = self._map_ref(
-            self._transportation_methods,
-            "transportation_method_MIT",
-            "transport_method_MIT",
-        )
-        des = self._map_ref(
-            self._transportation_methods,
-            "transportation_method_DES",
-            "transport_method_DES",
-        )
-        cor = self._map_ref(
-            self._transportation_methods,
-            "transportation_method_COR",
-            "transport_method_COR",
-        )
-
-        records = TransportationMethod.search(
-            [("id", "not in", [mit.id, des.id, cor.id])], order="id ASC"
-        )
+        records = TransportationMethod.search([], order="id ASC")
 
         self._map_create(self._transportation_methods, records, TransportMethod)
 
@@ -246,20 +181,7 @@ class MigrateL10nItDdt(EasyCommand):
         DocumentType = self.env["stock.ddt.type"]
         DeliveryNoteType = self.env["stock.delivery.note.type"]
 
-        old_type = self.env.ref("l10n_it_ddt.ddt_type_ddt")
-        new_type = self.env.ref("l10n_it_delivery_note_base.delivery_note_type_ddt")
-        new_type.write({"sequence_id": old_type.sequence_id.id})
-
-        self.env.cr.execute(
-            """
-            DELETE FROM "ir_model_data"
-            WHERE "module" = 'l10n_it_ddt' AND "name" = 'seq_ddt';
-        """
-        )
-
-        self._document_types[old_type] = new_type
-
-        records = DocumentType.search([("id", "not in", [old_type.id])], order="id ASC")
+        records = DocumentType.search([], order="id ASC")
 
         self._map_create(
             self._document_types,
