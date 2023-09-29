@@ -255,6 +255,7 @@ class MigrateL10nItDdt(EasyCommand):
                 "picking_ids": [(4, p.id) for p in record.picking_ids],
                 # "invoice_ids": [(4, record.invoice_id.id)] if record.invoice_id else [],
                 "note": record.note,
+                "pricelist_id": record.pricelist_id.id,
             }
 
         _logger.info("Migrating documents data...")
