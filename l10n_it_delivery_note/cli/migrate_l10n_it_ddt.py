@@ -262,6 +262,7 @@ class MigrateL10nItDdt(EasyCommand):
 
         Document = self.env["stock.picking.package.preparation"]
         DeliveryNote = self.env["stock.delivery.note"]
+        Attachment = self.env["ir.attachment"]
 
         documents = Document.search([], order="id ASC")
         for document in documents:
@@ -269,6 +270,15 @@ class MigrateL10nItDdt(EasyCommand):
                 with self.env.cr.savepoint():
                     _logger.info("PROCESSING - ID Document = {}".format(document.id))
                     delivery_note = DeliveryNote.create(vals_getter(document))
+                    attachment = Attachment.search(
+                        [
+                            ("res_model", "=", "stock.picking.package.preparation"),
+                            ("res_id", "=", document.id),
+                        ]
+                    )
+                    attachment.write(
+                        {"res_model": "stock.delivery.note", "res_id": delivery_note.id}
+                    )
                     extra_lines = document.line_ids.filtered(lambda l: not l.move_id)
 
                     if extra_lines:
