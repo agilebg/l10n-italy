@@ -20,9 +20,9 @@ along with this program (see LICENSE file). If not, see
 http://www.gnu.org/licenses/.
 
 -->
-<xsl:stylesheet 
-	version="1.1" 
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet
+	version="1.1"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:a="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2">
 <xsl:output method="html" />
 
@@ -53,7 +53,7 @@ http://www.gnu.org/licenses/.
 
                <xsl:when test="$kode = '0000000'"><span><xsl:value-of select="$kode"/></span><br/>Nicht akkreditierter Rechnungsempfänger <br/><i>Destinatario non accreditato</i></xsl:when>
                <xsl:when test="$kode = 'XXXXXXX'"><span><xsl:value-of select="$kode"/></span><br/>Ausländischer Rechnungsempfänger <br/><i>Destinatario non residenti</i></xsl:when>
-               
+
                <xsl:otherwise><span><xsl:value-of select="$kode"/></span></xsl:otherwise>
           </xsl:choose>
           <xsl:variable name="kodeSel" select="''"/>
@@ -120,7 +120,7 @@ http://www.gnu.org/licenses/.
      				#fattura-elettronica fehler {color: red; text-decoration:blink; }
 				#fattura-elettronica div { padding: 0; margin: 0; }
 				#fattura-elettronica
-				
+
 				div.page {
 				background-color: #fff !important;
 				position: relative;
@@ -360,7 +360,7 @@ http://www.gnu.org/licenses/.
                                                        <xsl:if test="a:FatturaElettronica/FatturaElettronicaHeader/CedentePrestatore/RiferimentoAmministrazione">
                                                             <h4>Hinweis Verwaltung / Buchhaltung - <i>Riferimento amministrativo</i></h4>
                                                                  <table id="t1">
-                                                                      <tr><td width="100px">1.2.6</td><td width="200px">Referenz<br/><i>Riferimento</i></td> 
+                                                                      <tr><td width="100px">1.2.6</td><td width="200px">Referenz<br/><i>Riferimento</i></td>
                                                                            <td width="500px"><span><xsl:value-of select="a:FatturaElettronica/FatturaElettronicaHeader/CedentePrestatore/RiferimentoAmministrazione"/></span></td>
                                                                       </tr>
                                                                  </table>
@@ -593,7 +593,7 @@ http://www.gnu.org/licenses/.
 											       <xsl:when test="$TD='TD22'"> (Warenentnahme aus dem Mehrwertsteuerlager)<br/><i>(Estrazione beni da Deposito IVA)</i></xsl:when>
 											       <xsl:when test="$TD='TD23'"> (Warenentnahme aus dem Mehrwertsteuerlager mit Mehrwertsteuerzahlung)<br/><i>(Estrazione beni da Deposito IVA con versamento dell'IVA)</i></xsl:when>
 											       <xsl:when test="$TD='TD24'"> (Aufgeschobene Rechnung gemäß Artikel 21, Absatz 4, Buchstabe a))<br/><i>(Fattura differita di cui all'art. 21, comma 4, lett. a))</i></xsl:when>
-											       <xsl:when test="$TD='TD25'"> (Aufgeschobene Rechnung gemäß Artikel 21, Absatz 4, Dritter Satz Buchstabe b))<br/><i>(Fattura differita di cui all'art. 21, comma 4, terzo periodo lett. b))</i></xsl:when> 
+											       <xsl:when test="$TD='TD25'"> (Aufgeschobene Rechnung gemäß Artikel 21, Absatz 4, Dritter Satz Buchstabe b))<br/><i>(Fattura differita di cui all'art. 21, comma 4, terzo periodo lett. b))</i></xsl:when>
 											       <xsl:when test="$TD='TD26'"> (Übertragung von abschreibungsfähigen Gütern und für interner Transaktionen (Art. 36 DPR 633/72))<br/><i>(Cessione di beni ammortizzabili e per passaggi interni (art.36 DPR 633/72))</i></xsl:when>
 											       <xsl:when test="$TD='TD27'"> (Rechnung für Eigenverbrauch oder für kostenlose Abtretungen ohne Entschädigung)<br/><i>(Fattura per autoconsumo o per cessioni gratuite senza rivalsa)</i></xsl:when>
                                                                                                <xsl:when test="$TD=''"/>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
-<xsl:stylesheet 
-	version="1.1" 
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet
+	version="1.1"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:a="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.0">
 	<xsl:output method="html" />
 
@@ -196,7 +196,7 @@
 											<h3>Dati del cedente / prestatore</h3>
 											<ul>
 												<xsl:for-each select="a:FatturaElettronicaSemplificata/FatturaElettronicaHeader/CedentePrestatore">
-														
+
 													<xsl:if test="IdFiscaleIVA">
 															<li>
 																Identificativo fiscale ai fini IVA:
@@ -206,7 +206,7 @@
 																</span>
 															</li>
 													</xsl:if>
-											
+
 													<xsl:if test="CodiceFiscale">
 															<li>
 																Codice fiscale:
@@ -214,9 +214,9 @@
 																	<xsl:value-of select="CodiceFiscale" />
 																</span>
 															</li>
-													</xsl:if>								
-											
-												
+													</xsl:if>
+
+
 													<xsl:if test="Denominazione">
 															<li>
 																Denominazione:
@@ -225,8 +225,8 @@
 																</span>
 															</li>
 													</xsl:if>
-																						
-																							
+
+
 													<xsl:if test="Nome">
 															<li>
 																Nome:
@@ -234,9 +234,9 @@
 																	<xsl:value-of select="Nome" />
 																</span>
 															</li>
-													</xsl:if>								
-											
-												
+													</xsl:if>
+
+
 													<xsl:if test="Cognome">
 															<li>
 																Cognome:
@@ -244,8 +244,8 @@
 																	<xsl:value-of select="Cognome" />
 																</span>
 															</li>
-													</xsl:if>		
-											
+													</xsl:if>
+
 											<xsl:if test="Sede">
 												<h4>Dati della sede</h4>
 												<ul>
@@ -301,8 +301,8 @@
 													</xsl:for-each>
 												</ul>
 											</xsl:if>
-											
-											
+
+
 											<xsl:if test="StabileOrganizzazione">
 												<h4>Dati della stabile organizzazione</h4>
 												<ul>
@@ -358,9 +358,9 @@
 													</xsl:for-each>
 												</ul>
 											</xsl:if>
-											
-											
-											
+
+
+
 											<xsl:if test="RappresentanteFiscale">
 												<h4>Dati del rappresentante fiscale del cedente / prestatore</h4>
 
@@ -398,11 +398,11 @@
 																	<xsl:value-of select="Cognome" />
 																</span>
 															</li>
-														</xsl:if>														
+														</xsl:if>
 													</xsl:for-each>
 												</ul>
 											</xsl:if>
-											
+
 											<xsl:if test="IscrizioneREA">
 												<h4>Dati di iscrizione nel registro delle imprese</h4>
 
@@ -485,13 +485,13 @@
 													</xsl:for-each>
 												</ul>
 											</xsl:if>
-											
-											
-											
+
+
+
 											<xsl:if test="RegimeFiscale">
 												<h4>Regime fiscale</h4>
 												<ul>
-												
+
 													<xsl:if test="RegimeFiscale">
 															<li>
 																Regime fiscale:
@@ -574,22 +574,22 @@
 											</xsl:if>
 
 												</xsl:for-each>
-											
+
 											</ul>
 										</div>
 									</xsl:if>
 									<!--FINE DATI CEDENTE PRESTATORE-->
 
-									
+
 
 									<!--INIZIO DATI CESSIONARIO COMMITTENTE-->
 									<xsl:if test="a:FatturaElettronicaSemplificata/FatturaElettronicaHeader/CessionarioCommittente">
 										<div id="cessionario">
 											<h3>Dati del cessionario / committente</h3>
 											<ul>
-											
+
 										<xsl:for-each select="a:FatturaElettronicaSemplificata/FatturaElettronicaHeader/CessionarioCommittente">
-												
+
 											<xsl:if test="IdentificativiFiscali">
 												<h4>Dati fiscali</h4>
 
@@ -611,18 +611,18 @@
 																	<xsl:value-of select="CodiceFiscale" />
 																</span>
 															</li>
-														</xsl:if>														
+														</xsl:if>
 													</xsl:for-each>
 												</ul>
 											</xsl:if>
 
 
 											<xsl:if test="AltriDatiIdentificativi">
-												<h4>Altri dati identificativi</h4>	
+												<h4>Altri dati identificativi</h4>
 
 												<ul>
 												<xsl:for-each select="AltriDatiIdentificativi">
-													
+
 													   <xsl:if test="Denominazione">
 															<li>
 																Denominazione:
@@ -702,8 +702,8 @@
 													</xsl:for-each>
 												</ul>
 											</xsl:if>
-											
-											
+
+
 											<xsl:if test="StabileOrganizzazione">
 												<h4>Dati della stabile organizzazione</h4>
 												<ul>
@@ -759,9 +759,9 @@
 													</xsl:for-each>
 												</ul>
 											</xsl:if>
-											
-											
-											
+
+
+
 											<xsl:if test="RappresentanteFiscale">
 												<h4>Dati del rappresentante fiscale del cedente / prestatore</h4>
 
@@ -799,10 +799,10 @@
 																	<xsl:value-of select="Cognome" />
 																</span>
 															</li>
-														</xsl:if>														
+														</xsl:if>
 													</xsl:for-each>
 												</ul>
-											</xsl:if>											
+											</xsl:if>
 													</xsl:for-each>
 												</ul>
 											</xsl:if>
@@ -811,9 +811,9 @@
 										</div>
 									</xsl:if>
 									<!--FINE DATI CESSIONARIO COMMITTENTE-->
-									
-									
-									
+
+
+
 
 									<!--INIZIO DATI SOGGETTO EMITTENTE-->
 									<xsl:if test="a:FatturaElettronicaSemplificata/FatturaElettronicaHeader/SoggettoEmittente">
@@ -852,10 +852,10 @@
 										<a href="http://www.fatturapa.gov.it">www.fatturapa.gov.it</a>
 									</div>
 								</div>
-								
-							</xsl:if>	
+
+							</xsl:if>
 						<!--FINE DATI HEADER-->
-							
+
 						<xsl:if test="a:FatturaElettronicaSemplificata/FatturaElettronicaBody">
 								<div class="page">
 									<div class="versione">
@@ -875,14 +875,14 @@
 										<xsl:value-of select="position()" />
 									</h2>
 								</xsl:if>
-									
-									
-									
-									
+
+
+
+
 
 									<xsl:if test="DatiGenerali">
-									
-									
+
+
 										<!--INIZIO DATI GENERALI-->
 										<div id="dati-generali" >
 
@@ -947,7 +947,7 @@
 																	<xsl:value-of select="DatiGenerali/DatiGeneraliDocumento/Numero" />
 																</span>
 															</li>
-														</xsl:if>														
+														</xsl:if>
 														<!-- INIZIO DATI DEL BOLLO -->
 														<xsl:if test="DatiGenerali/DatiGeneraliDocumento/DatiBollo">
 														<div id="dati-bollo">
@@ -967,11 +967,11 @@
 														</div>
 														</xsl:if>
 														<!-- FINE DATI DEL BOLLO -->
-													</ul>	
+													</ul>
 												</div>
 											</xsl:if>
 											<!--FINE DATI GENERALI DOCUMENTO-->
-											
+
 
 													<!--INIZIO DATI DELLA FATTURA RETTIFICATA-->
 													<xsl:if test="DatiGenerali/DatiFatturaRettificata">
@@ -986,7 +986,7 @@
 																				<xsl:value-of select="NumeroFR" />
 																			</span>
 																		</li>
-																	</xsl:if>	
+																	</xsl:if>
 																	<xsl:if test="DataFR">
 																		<li>
 																			Data fattura rettificata:
@@ -997,7 +997,7 @@
 																				<xsl:with-param name="DateTime" select="DataFR" />
 																			</xsl:call-template>
 																		</li>
-																	</xsl:if>	
+																	</xsl:if>
 																	<xsl:if test="ElementiRettificati">
 																		<li>
 																			Elementi rettificati:
@@ -1005,33 +1005,33 @@
 																				<xsl:value-of select="ElementiRettificati" />
 																			</span>
 																		</li>
-																	</xsl:if>	
+																	</xsl:if>
 																</ul>
 															</xsl:for-each>
 														</div>
 													</xsl:if>
-													<!--FINE DATI DELLA FATTURA RETTIFICATA-->		
+													<!--FINE DATI DELLA FATTURA RETTIFICATA-->
 
-										</div>									
+										</div>
 									<!--FINE DATI GENERALI-->
 
-                                    
+
 
 												<!--INIZIO DATI BENI E SERVIZI-->
 												    <xsl:if test="DatiBeniServizi">
 													  <div id="Dati-beni-servizio">
-														<h3>Dati beni servizi</h3>		
-														
+														<h3>Dati beni servizi</h3>
+
 														<ul>
 														<xsl:for-each select="DatiBeniServizi">
-																	
-													
+
+
 
 			                                            <xsl:if test="Descrizione">
 			                                            <li>
-															
+
 																<xsl:if test="Descrizione">
-																		
+
 																			Descrizione bene/servizio:
 																			<span>
 																				<xsl:value-of select="Descrizione" />
@@ -1039,9 +1039,9 @@
 																</xsl:if>
 																		</li>
 														</xsl:if>
-														
+
 														<xsl:if test="Importo">
-															
+
 																<xsl:if test="Importo">
 																		<li>
 																			Importo bene/servizio:
@@ -1050,9 +1050,9 @@
 																			</span>
 																		</li>
 																</xsl:if>
-														</xsl:if>	
+														</xsl:if>
 														<xsl:if test="DatiIVA/Imposta">
-															
+
 																<xsl:if test="DatiIVA/Imposta">
 																		<li>
 																			Ammontare imposta bene/servizio:
@@ -1063,7 +1063,7 @@
 																</xsl:if>
 														</xsl:if>
 														<xsl:if test="DatiIVA/Aliquota">
-															
+
 																<xsl:if test="DatiIVA/Aliquota">
 																		<li>
 																			Aliquota IVA (%):
@@ -1074,7 +1074,7 @@
 																</xsl:if>
 														</xsl:if>
 														<xsl:if test="Natura">
-															
+
 																<xsl:if test="Natura">
 																		<li>
 																			Natura operazioni:
@@ -1106,7 +1106,7 @@
 																</xsl:if>
 														</xsl:if>
 														<xsl:if test="RiferimentoNormativo">
-															
+
 																<xsl:if test="RiferimentoNormativo">
 																		<li>
 																			Riferimento normativo bene/servizio:
@@ -1116,13 +1116,13 @@
 																		</li>
 																</xsl:if>
 														</xsl:if>
-															</xsl:for-each>	
+															</xsl:for-each>
 																</ul>
 														</div>
-													</xsl:if>																		
+													</xsl:if>
 									<!--FINE DATI BENI E SERVIZI-->
-									
-									
+
+
 									<!--INIZIO ALLEGATI-->
 									<xsl:if test="Allegati">
 										<div id="allegati">
@@ -1166,24 +1166,24 @@
 											</xsl:for-each>
 										</div>
 									</xsl:if>
-									<!--FINE ALLEGATI-->								
-								
+									<!--FINE ALLEGATI-->
 
-									
-								    </xsl:if>							  
+
+
+								    </xsl:if>
 								</xsl:for-each>
 								<div class="footer">
 										Versione prodotta con foglio di stile SdI
 										<a href="http://www.fatturapa.gov.it">www.fatturapa.gov.it</a>
 									</div>
-							
+
 								</div>
-							<!--FINE BODY-->	
-							</xsl:if>							
-						  </div>	
+							<!--FINE BODY-->
+							</xsl:if>
+						  </div>
 						</xsl:if>
 
-				 </div>		
+				 </div>
 			</body>
 		</html>
 	</xsl:template>

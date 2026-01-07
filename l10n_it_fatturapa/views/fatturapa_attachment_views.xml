@@ -36,15 +36,15 @@
                             <label for="create_uid" string="Created by" />
                             <div name="creation_div">
                                 <field
-                                    name="create_uid"
-                                    readonly="1"
-                                    class="oe_inline"
-                                /> on
+                                name="create_uid"
+                                readonly="1"
+                                class="oe_inline"
+                            /> on
                                 <field
-                                    name="create_date"
-                                    readonly="1"
-                                    class="oe_inline"
-                                />
+                                name="create_date"
+                                readonly="1"
+                                class="oe_inline"
+                            />
                             </div>
                         </page>
                     </notebook>

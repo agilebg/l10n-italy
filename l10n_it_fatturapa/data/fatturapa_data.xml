@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo noupdate="1">
-
     <!-- FatturaPA Fiscal Positions -->
     <record id="fatturapa_RF01" model="fatturapa.fiscal_position">
         <field name="code">RF01</field>
