@@ -17,6 +17,7 @@
     "license": "AGPL-3",
     "maintainers": ["MarcoCalcagni", "Borruso"],
     "depends": [
+        "l10n_it_fatturapa",
     ],
     "data": [
     ],
