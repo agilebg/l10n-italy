@@ -16,8 +16,10 @@
     "excludes": [
     ],
     "depends": [
+        "account",
     ],
     "data": [
+        "security/ir.model.access.csv",
     ],
     "installable": True,
     "external_dependencies": {
