@@ -2,3 +2,4 @@
 
 from . import link_e_invoice_ir_attachment
 from . import account
+from . import ir_attachment
