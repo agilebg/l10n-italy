@@ -17,6 +17,7 @@
     "website": "https://github.com/OCA/l10n-italy",
     "license": "AGPL-3",
     "depends": [
+        "l10n_it_fatturapa",
         "l10n_it_fatturapa_pec",
     ],
     "installable": True,
