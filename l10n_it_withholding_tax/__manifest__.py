@@ -14,6 +14,7 @@
     "depends": [
     ],
     "data": [
+	"views/report_invoice.xml",
     ],
     "installable": True,
     "development_status": "Beta",
