@@ -21,12 +21,6 @@ class FatturaPAAttachmentIn(models.Model):
     _name = "fatturapa.attachment.in"
     _description = "Electronic Invoice"
 
-    in_invoice_ids = fields.One2many(
-        "account.move",
-        "fatturapa_attachment_in_id",
-        string="In Bills",
-        readonly=True,
-    )
     xml_supplier_id = fields.Many2one(
         "res.partner", string="Supplier", store=True
     )
@@ -94,7 +88,6 @@ class FatturaPAAttachmentIn(models.Model):
         )
     ]
 
-    @api.depends("in_invoice_ids.e_invoice_validation_error")
     def _compute_e_invoice_validation_error(self):
         for att in self:
             att.e_invoice_validation_error = False
@@ -115,7 +108,6 @@ class FatturaPAAttachmentIn(models.Model):
                 )
             att.e_invoice_validation_message = "\n\n".join(error_messages)
 
-    @api.depends("in_invoice_ids")
     def _compute_registered(self):
         for att in self:
             if att.in_invoice_ids and len(att.in_invoice_ids) == att.invoices_number:
