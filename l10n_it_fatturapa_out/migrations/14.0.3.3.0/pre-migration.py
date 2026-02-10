@@ -8,7 +8,7 @@ merged_modules = {
 }
 
 
-def migrate(cr, installed_version):
+def migrate(cr, version):
     installed_merged_modules = {
         old_module: new_module
         for old_module, new_module in merged_modules.items()
