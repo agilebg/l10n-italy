@@ -17,12 +17,6 @@ class FatturaPAAttachment(models.Model):
     ]
     _order = "id desc"
 
-    out_invoice_ids = fields.One2many(
-        "account.move",
-        "fatturapa_attachment_out_id",
-        string="Out Invoices",
-        readonly=True,
-    )
     has_pdf_invoice_print = fields.Boolean(
         help="True if all the invoices have a printed "
         "report attached in the XML, False otherwise.",
@@ -57,7 +51,6 @@ class FatturaPAAttachment(models.Model):
     sending_date = fields.Datetime("Sent Date", readonly=True)
     delivered_date = fields.Datetime("Delivered Date", readonly=True)
 
-    @api.depends("out_invoice_ids")
     def _compute_invoice_partner_id(self):
         for att in self:
             partners = att.mapped("out_invoice_ids.partner_id")
@@ -65,7 +58,6 @@ class FatturaPAAttachment(models.Model):
             if len(partners) == 1:
                 att.invoice_partner_id = partners.id
 
-    @api.depends("out_invoice_ids.fatturapa_doc_attachments.is_pdf_invoice_print")
     def _compute_has_pdf_invoice_print(self):
         """Check if all the invoices related to this attachment
         have at least one attachment containing
