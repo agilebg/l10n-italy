@@ -19,3 +19,8 @@ class FatturaAttachments(models.Model):
         "account.move", "Related Invoice", ondelete="cascade", index=True
     )
 
+class AccountInvoiceLine(models.Model):
+    # _position = ['2.2.1']
+    _inherit = "account.move.line"
+
+    ftpa_line_number = fields.Integer("Line Number", readonly=True, copy=False)
