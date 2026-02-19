@@ -24,6 +24,18 @@ class AccountInvoice(models.Model):
     _inherit = "account.move"
 
     carrier_id = fields.Many2one("res.partner", string="Carrier", copy=False)
+    transport_vehicle = fields.Char("Vehicle", size=80, copy=False)
+    transport_reason = fields.Char("Reason", size=80, copy=False)
+    number_items = fields.Integer("Number of Items", copy=False)
+    description = fields.Char(size=100, copy=False)
+    unit_weight = fields.Char("Weight Unit", size=10, copy=False)
+    gross_weight = fields.Float(copy=False)
+    net_weight = fields.Float(copy=False)
+    pickup_datetime = fields.Datetime("Pick up", copy=False)
+    transport_date = fields.Date(copy=False)
+    delivery_address = fields.Text("Delivery Address for E-invoice", copy=False)
+    delivery_datetime = fields.Datetime("Delivery Date Time", copy=False)
+    ftpa_incoterms = fields.Char(string="E-inv Incoterms", copy=False)
 
 class AccountInvoiceLine(models.Model):
     # _position = ['2.2.1']
