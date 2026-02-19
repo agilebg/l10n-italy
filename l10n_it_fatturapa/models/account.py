@@ -19,6 +19,12 @@ class FatturaAttachments(models.Model):
         "account.move", "Related Invoice", ondelete="cascade", index=True
     )
 
+class AccountInvoice(models.Model):
+    # _position = ['2.1', '2.2', '2.3', '2.4', '2.5']
+    _inherit = "account.move"
+
+    carrier_id = fields.Many2one("res.partner", string="Carrier", copy=False)
+
 class AccountInvoiceLine(models.Model):
     # _position = ['2.2.1']
     _inherit = "account.move.line"
