@@ -36,6 +36,8 @@ class AccountInvoice(models.Model):
     delivery_address = fields.Text("Delivery Address for E-invoice", copy=False)
     delivery_datetime = fields.Datetime("Delivery Date Time", copy=False)
     ftpa_incoterms = fields.Char(string="E-inv Incoterms", copy=False)
+    vehicle_registration = fields.Date(copy=False)
+    total_travel = fields.Char("Travel in hours or Km", size=15, copy=False)
 
 class AccountInvoiceLine(models.Model):
     # _position = ['2.2.1']
