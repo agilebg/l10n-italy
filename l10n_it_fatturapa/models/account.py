@@ -3,6 +3,16 @@
 from odoo import fields, models
 
 
+class FatturapaActivityProgress(models.Model):
+    # _position = ['2.1.7']
+    _name = "fatturapa.activity.progress"
+    _description = "E-invoice activity progress"
+
+    fatturapa_activity_progress = fields.Integer("Activity Progress")
+    invoice_id = fields.Many2one(
+        "account.move", "Related Invoice", ondelete="cascade", index=True
+    )
+
 class FatturaAttachments(models.Model):
     # _position = ['2.5']
     _name = "fatturapa.attachments"
