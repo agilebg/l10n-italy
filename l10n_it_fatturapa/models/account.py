@@ -1,6 +1,6 @@
 # Copyright 2014 Davide Corio <davide.corio@abstract.it>
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class FatturapaActivityProgress(models.Model):
@@ -12,6 +12,38 @@ class FatturapaActivityProgress(models.Model):
     invoice_id = fields.Many2one(
         "account.move", "Related Invoice", ondelete="cascade", index=True
     )
+
+class FatturapaSummaryData(models.Model):
+    # _position = ['2.2.2']
+    _name = "fatturapa.summary.data"
+    _description = "E-invoice summary data"
+    tax_rate = fields.Float("Tax Rate")
+
+    @api.model
+    def _get_tax_kinds(self):
+        return [(t.code, t.name) for t in self.env["account.tax.kind"].search([])]
+
+    non_taxable_nature = fields.Selection(
+        selection="_get_tax_kinds",
+        string="Non taxable nature",
+    )
+    incidental_charges = fields.Float("Incidental Charges")
+    rounding = fields.Float("Rounding")
+    amount_untaxed = fields.Float("Amount Untaxed")
+    amount_tax = fields.Float("Amount Tax")
+    payability = fields.Selection(
+        [
+            ("I", "Immediate payability"),
+            ("D", "Deferred payability"),
+            ("S", "Split payment"),
+        ],
+        string="VAT payability",
+    )
+    law_reference = fields.Char("Law reference", size=128)
+    invoice_id = fields.Many2one(
+        "account.move", "Related Invoice", ondelete="cascade", index=True
+    )
+
 
 class FatturaAttachments(models.Model):
     # _position = ['2.5']
