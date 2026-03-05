@@ -3,6 +3,24 @@
 from odoo import api, fields, models
 
 
+class DiscountRisePrice(models.Model):
+    # _position = ['2.1.1.8', '2.2.1.10']
+    _name = "discount.rise.price"
+    _description = "E-invoice Discount Supplement Data"
+
+    name = fields.Selection([("SC", "Discount"), ("MG", "Supplement")], "Type")
+    percentage = fields.Float("Percentage")
+    amount = fields.Float("Amount", digits="Discount")
+    invoice_line_id = fields.Many2one(
+        "account.move.line",
+        "Related Invoice from line",
+        ondelete="cascade",
+        index=True,
+    )
+    invoice_id = fields.Many2one(
+        "account.move", "Related Invoice", ondelete="cascade", index=True
+    )
+
 class FatturapaActivityProgress(models.Model):
     # _position = ['2.1.7']
     _name = "fatturapa.activity.progress"
